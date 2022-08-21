@@ -5,7 +5,7 @@ class Crawler:
     
     def __init__(self):
         self.url = 'https://jobs.govt.nz/jobtools/jncustomsearch.searchAction'
-        self.per_page = 160
+        self.per_page = 20
 
     def _get(self, url):
         r = requests.get(url)
@@ -44,6 +44,9 @@ class Crawler:
         if len(links) > 0:
             self._post(page + self.per_page)
 
+    def run(self):
+        self._post()
+
 
 crawler = Crawler()
-crawler._post()
+crawler.run()
